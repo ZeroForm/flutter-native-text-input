@@ -2,6 +2,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
+import "dart:developer" as developer;
+
 enum TextContentType {
   name,
   namePrefix,
@@ -232,13 +234,23 @@ class _NativeTextInputState extends State<NativeTextInput> {
   }
 
   void _inputValueChanged(String text, int lineIndex) {
+    var original_line_index = _currentLineIndex;
     if (text != null) {
-      if (_isMultiline &&
-          _currentLineIndex != lineIndex &&
-          lineIndex <= widget.maxLines) {
-        setState(() {
+      if (_isMultiline) {
+        if (_currentLineIndex != lineIndex && lineIndex <= widget.maxLines) {
           _currentLineIndex = lineIndex;
-        });
+        }
+
+        if (widget.maxLines == 0 && lineIndex <= 6) {
+          _currentLineIndex = lineIndex;
+        }
+        developer.log("Line Index " + _currentLineIndex.toString());
+        developer.log("Original Line Index " + original_line_index.toString());
+        if (original_line_index != _currentLineIndex) {
+          setState(() {
+            _currentLineIndex = lineIndex;
+          });
+        }
       } else {
         _currentLineIndex = 0;
       }

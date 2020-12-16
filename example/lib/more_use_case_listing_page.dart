@@ -22,42 +22,42 @@ class _MoreUseCaseListingPageState extends State<MoreUseCaseListingPage> {
         appBar: AppBar(
           title: Text("More Use Cases"),
         ),
-        body: SingleChildScrollView(
+        body: Container(
           child: Column(
             children: [
-              DemoItem(
-                  title: "No Placeholder",
-                  child: NativeTextInput(
-                    onChanged: _onChangeText,
-                    onSubmitted: _onSubmittedText,
-                  )),
-              DemoItem(
-                  title: "Numeric Keyboard",
-                  child: Column(
-                    children: <Widget>[
-                      NativeTextInput(
-                        keyboardType: KeyboardType.decimalPad,
-                        onChanged: _onChangeText,
-                        onSubmitted: _onSubmittedText,
-                      ),
-                    ],
-                  )),
-              DemoItem(
-                  title: "Pre-Filling Text",
-                  child: NativeTextInput(
-                    controller: TextEditingController(text: "Text"),
-                    onChanged: _onChangeText,
-                    onSubmitted: _onSubmittedText,
-                  )),
-              DemoItem(
-                title: "Aligning Text to End",
-                child: NativeTextInput(
-                  textAlign: TextAlign.end,
-                  controller: TextEditingController(text: "Text"),
-                  onChanged: _onChangeText,
-                  onSubmitted: _onSubmittedText,
-                ),
-              ),
+              // DemoItem(
+              //     title: "No Placeholder",
+              //     child: NativeTextInput(
+              //       onChanged: _onChangeText,
+              //       onSubmitted: _onSubmittedText,
+              //     )),
+              // DemoItem(
+              //     title: "Numeric Keyboard",
+              //     child: Column(
+              //       children: <Widget>[
+              //         NativeTextInput(
+              //           keyboardType: KeyboardType.decimalPad,
+              //           onChanged: _onChangeText,
+              //           onSubmitted: _onSubmittedText,
+              //         ),
+              //       ],
+              //     )),
+              // DemoItem(
+              //     title: "Pre-Filling Text",
+              //     child: NativeTextInput(
+              //       controller: TextEditingController(text: "Text"),
+              //       onChanged: _onChangeText,
+              //       onSubmitted: _onSubmittedText,
+              //     )),
+              // DemoItem(
+              //   title: "Aligning Text to End",
+              //   child: NativeTextInput(
+              //     textAlign: TextAlign.end,
+              //     controller: TextEditingController(text: "Text"),
+              //     onChanged: _onChangeText,
+              //     onSubmitted: _onSubmittedText,
+              //   ),
+              // ),
               DemoItem(
                   title: "Multiline Text Input",
                   child: NativeTextInput(
@@ -66,84 +66,84 @@ class _MoreUseCaseListingPageState extends State<MoreUseCaseListingPage> {
                     onChanged: _onChangeText,
                     onSubmitted: _onSubmittedText,
                   )),
-              DemoItem(
-                title: "Displaying Input Value",
-                child: Column(children: [
-                  NativeTextInput(
-                    placeholder: "Type something here",
-                    onChanged: (value) {
-                      _onChangeText(value);
-                      setState(() {
-                        _currentTextInput = value;
-                      });
-                    },
-                    onSubmitted: _onSubmittedText,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Current Input: '),
-                      Expanded(child: Text(_currentTextInput)),
-                    ],
-                  )
-                ]),
-              ),
-              DemoItem(
-                  title: "Focusing or Unfocusing Text Input",
-                  child: Column(
-                    children: [
-                      FlatButton(
-                          color: Colors.blue,
-                          colorBrightness: Brightness.dark,
-                          child: Text("Tap Me!"),
-                          onPressed: () {
-                            if (_focusNode.hasFocus) {
-                              FocusScope.of(context).unfocus();
-                            } else {
-                              FocusScope.of(context).requestFocus(_focusNode);
-                            }
-                          }),
-                      NativeTextInput(
-                        focusNode: _focusNode,
-                        onChanged: _onChangeText,
-                        onSubmitted: _onSubmittedText,
-                      )
-                    ],
-                  )),
-              DemoItem(
-                  title: "Filling Text Programmatically",
-                  child: Column(
-                    children: [
-                      FlatButton(
-                        color: Colors.blue,
-                        colorBrightness: Brightness.dark,
-                        child: Text("Tap Me!"),
-                        onPressed: () => _changeTextController.text =
-                            DateTime.now().toString(),
-                      ),
-                      NativeTextInput(
-                        controller: _changeTextController,
-                        onChanged: _onChangeText,
-                        onSubmitted: _onSubmittedText,
-                      )
-                    ],
-                  )),
-              Padding(
-                padding: EdgeInsets.all(100),
-                child: Center(
-                    child: Column(children: [
-                  Text(
-                    'All done!',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Enjoy using in your way!',
-                    style: TextStyle(fontSize: 17),
-                    textAlign: TextAlign.center,
-                  )
-                ])),
-              ),
+              // DemoItem(
+              //   title: "Displaying Input Value",
+              //   child: Column(children: [
+              //     NativeTextInput(
+              //       placeholder: "Type something here",
+              //       onChanged: (value) {
+              //         _onChangeText(value);
+              //         setState(() {
+              //           _currentTextInput = value;
+              //         });
+              //       },
+              //       onSubmitted: _onSubmittedText,
+              //     ),
+              //     Row(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         Text('Current Input: '),
+              //         Expanded(child: Text(_currentTextInput)),
+              //       ],
+              //     )
+              //   ]),
+              // ),
+              // DemoItem(
+              //     title: "Focusing or Unfocusing Text Input",
+              //     child: Column(
+              //       children: [
+              //         FlatButton(
+              //             color: Colors.blue,
+              //             colorBrightness: Brightness.dark,
+              //             child: Text("Tap Me!"),
+              //             onPressed: () {
+              //               if (_focusNode.hasFocus) {
+              //                 FocusScope.of(context).unfocus();
+              //               } else {
+              //                 FocusScope.of(context).requestFocus(_focusNode);
+              //               }
+              //             }),
+              //         NativeTextInput(
+              //           focusNode: _focusNode,
+              //           onChanged: _onChangeText,
+              //           onSubmitted: _onSubmittedText,
+              //         )
+              //       ],
+              //     )),
+              // DemoItem(
+              //     title: "Filling Text Programmatically",
+              //     child: Column(
+              //       children: [
+              //         FlatButton(
+              //           color: Colors.blue,
+              //           colorBrightness: Brightness.dark,
+              //           child: Text("Tap Me!"),
+              //           onPressed: () => _changeTextController.text =
+              //               DateTime.now().toString(),
+              //         ),
+              //         NativeTextInput(
+              //           controller: _changeTextController,
+              //           onChanged: _onChangeText,
+              //           onSubmitted: _onSubmittedText,
+              //         )
+              //       ],
+              //     )),
+              // Padding(
+              //   padding: EdgeInsets.all(100),
+              //   child: Center(
+              //       child: Column(children: [
+              //     Text(
+              //       'All done!',
+              //       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              //       textAlign: TextAlign.center,
+              //     ),
+              //     Text(
+              //       'Enjoy using in your way!',
+              //       style: TextStyle(fontSize: 17),
+              //       textAlign: TextAlign.center,
+              //     )
+              //   ])),
+              // ),
             ],
           ),
         ));
